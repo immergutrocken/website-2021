@@ -31,6 +31,20 @@ export default function Home(props: HomeProps): JSX.Element {
         height="587"
         layout="responsive"
       />
+      <div className="w-full text-center p-3">
+        Made with{" "}
+        <span role="img" aria-label="heart">
+          ❤️
+        </span>
+        , structured content powered by{" "}
+        <a href="https://www.sanity.io" target="_blank" rel="noreferrer">
+          sanity.io
+        </a>
+        , hosted bei{" "}
+        <a href="https://www.vercel.com" target="_blank" rel="noreferrer">
+          vercel.com
+        </a>
+      </div>
     </div>
   );
 }
