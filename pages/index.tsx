@@ -21,7 +21,7 @@ export default function Home(props: HomeProps): JSX.Element {
   return (
     <div className="">
       <Head>
-        <title>22. Immergut Festival</title>
+        <title>21. Immergut Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header list={props.list}></Header>
