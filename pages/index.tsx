@@ -3,6 +3,7 @@ import NextImage from "next/image";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { getNewsList, NewsLink } from "../lib/news";
+import styles from "../styles/Home.module.scss";
 
 interface HomeProps {
   list: NewsLink[];
@@ -32,6 +33,9 @@ export default function Home(props: HomeProps): JSX.Element {
         height="587"
         layout="responsive"
       />
+      <div className={`absolute ${styles.logo}`}>
+        <NextImage src="/images/ig-motto-logo1.svg" height={100} width={100} />
+      </div>
       <Footer />
     </div>
   );
