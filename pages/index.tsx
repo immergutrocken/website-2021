@@ -1,5 +1,6 @@
-import Head from "next/head";
-import Image from "next/image";
+import NextHead from "next/head";
+import NextImage from "next/image";
+import Footer from "../components/footer";
 import Header from "../components/header";
 import { getNewsList, NewsLink } from "../lib/news";
 
@@ -20,31 +21,18 @@ export const getStaticProps = async (): Promise<{
 export default function Home(props: HomeProps): JSX.Element {
   return (
     <div className="">
-      <Head>
+      <NextHead>
         <title>21. Immergut Festival</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </NextHead>
       <Header list={props.list}></Header>
-      <Image
+      <NextImage
         src="/images/ig-website-desktop-illu.jpg"
         width="1140"
         height="587"
         layout="responsive"
       />
-      <div className="w-full text-center p-3">
-        Made with{" "}
-        <span role="img" aria-label="heart">
-          ❤️
-        </span>
-        , structured content powered by{" "}
-        <a href="https://www.sanity.io" target="_blank" rel="noreferrer">
-          sanity.io
-        </a>
-        , hosted bei{" "}
-        <a href="https://www.vercel.com" target="_blank" rel="noreferrer">
-          vercel.com
-        </a>
-      </div>
+      <Footer />
     </div>
   );
 }

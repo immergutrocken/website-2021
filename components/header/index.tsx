@@ -1,12 +1,13 @@
-import { NewsLink } from "../lib/news";
-import styles from "./header.module.scss";
+import { NewsLink } from "../../lib/news";
+import Link from "../shared/link";
+import styles from "./index.module.scss";
 
 const Header = ({ list }: { list: NewsLink[] }): JSX.Element => {
   return (
     <header className="sticky top-0 z-10 bg-white">
       <div
         className={
-          "flex flex-nowrap text-4xl p-2 overflow-x-auto overflow-y-hidden whitespace-nowrap w-full" +
+          "flex flex-nowrap text-4xl p-2 overflow-x-auto overflow-y-hidden whitespace-nowrap w-full " +
           styles.scrollbar
         }
       >
@@ -14,7 +15,9 @@ const Header = ({ list }: { list: NewsLink[] }): JSX.Element => {
         {list.map((news: NewsLink, index: number) => {
           return (
             <span key={news.slug}>
-              <span className="ml-4 mr-4">{news.title}</span>
+              <Link href="" className="ml-4 mr-4">
+                {news.title}
+              </Link>
               {index === list.length - 1 ? "" : "•"}
             </span>
           );
