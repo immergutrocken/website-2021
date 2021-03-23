@@ -27,7 +27,7 @@ export default function Home(props: HomeProps): JSX.Element {
       </NextHead>
       <Header list={props.list}></Header>
       <NextImage
-        src="/images/ig-website-desktop-illu.jpg"
+        src="/images/ig-website-desktop-illu2.jpg"
         width="1140"
         height="587"
         layout="responsive"
