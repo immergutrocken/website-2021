@@ -1,7 +1,9 @@
 import { IPartner } from "../../lib/partner";
+import Bubble from "../shared/bubble";
 import Link from "../shared/link";
 import styles from "./index.module.scss";
 import Partner from "./partner";
+import NextImage from "next/image";
 
 interface FooterProps {
   sponsorList: IPartner[];
@@ -29,7 +31,39 @@ const Footer = ({
   additionalList,
 }: FooterProps): JSX.Element => (
   <>
-    <div className="grid grid-cols-1 md:grid-cols-3 mt-24 p-3">
+    <div className="flex flex-row mt-4 justify-center space-x-4">
+      <Link href="https://open.spotify.com/user/immergut_festival">
+        <Bubble>
+          <NextImage src="/spotify-logo.svg" height="22" width="32" />
+        </Bubble>
+      </Link>
+      <Link href="https://www.youtube.com/immergutfestival">
+        <Bubble>
+          <NextImage src="/youtube-logo.svg" height="32" width="28" />
+        </Bubble>
+      </Link>
+      <Link href="https://www.facebook.com/immergutrocken">
+        <Bubble>
+          <NextImage src="/facebook-logo.svg" height="32" width="28" />
+        </Bubble>
+      </Link>
+      <Link href="https://instagram.com/immergutrocken">
+        <Bubble>
+          <NextImage src="/instagram-logo.svg" height="32" width="28" />
+        </Bubble>
+      </Link>
+      <Link href="https://twitter.com/immergutrocken">
+        <Bubble>
+          <NextImage src="/twitter-logo.svg" height="32" width="28" />
+        </Bubble>
+      </Link>
+      <Link href="https://www.flickr.com/photos/immergutrocken">
+        <Bubble>
+          <NextImage src="/flickr-logo.svg" height="32" width="28" />
+        </Bubble>
+      </Link>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 mt-4 p-3">
       <Partner title="Sponsor*innen" list={sponsorList} />
       <Partner title="Medienpartner*innen" list={mediaPartnerList} />
       <Partner title="Ausserdem" list={additionalList} />
