@@ -15,21 +15,17 @@ const Partner = ({ title, className, list }: PartnerProps): JSX.Element => (
       </span>
     </div>
     <div className="mt-4">
-      {list?.map((partner) => (
-        <a
-          href={partner.link}
-          className="m-5"
-          target="_blank"
-          rel="noreferrer"
-          key={partner.logo.asset._ref}
-        >
-          <NextImage
-            src={partner.logo.url}
-            width={partner.logo.width}
-            height={partner.logo.height}
-            alt={partner.logo.alt}
-          />
-        </a>
+      {list?.map((partner, index) => (
+        <span className="p-3" key={index}>
+          <a href={partner.link} target="_blank" rel="noreferrer">
+            <NextImage
+              src={partner.logo.url}
+              width={partner.logo.width}
+              height={partner.logo.height}
+              alt={partner.logo.alt}
+            />
+          </a>
+        </span>
       ))}
     </div>
   </div>
