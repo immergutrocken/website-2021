@@ -7,7 +7,7 @@ const Header = ({ list }: { list: NewsLink[] }): JSX.Element => {
     <header className="sticky top-0 z-10 bg-white">
       <div
         className={
-          "flex flex-nowrap text-3xl p-2 overflow-x-auto overflow-y-hidden whitespace-nowrap w-full " +
+          "flex flex-nowrap text-4xl p-2 overflow-x-auto overflow-y-hidden whitespace-nowrap w-full " +
           styles.scrollbar
         }
       >

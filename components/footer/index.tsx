@@ -26,7 +26,7 @@ const Footer = (): JSX.Element => (
       <Link href="https://www.sanity.io">sanity.io</Link>, hosted by{" "}
       <Link href="https://www.vercel.com">vercel.com</Link>
     </div>
-    <div className="sticky bottom-0 text-3xl p-2 whitespace-nowrap overflow-x-hidden bg-white">
+    <div className="sticky bottom-0 text-4xl p-2 whitespace-nowrap overflow-x-hidden bg-white">
       <div className={styles.ticker}>{buildDateAndLocation(10)}</div>
     </div>
   </>
