@@ -1,4 +1,4 @@
-import { IPartner } from "../../../lib/partner";
+import { IPartner } from "../lib/partner";
 import NextImage from "next/image";
 
 export interface PartnerProps {

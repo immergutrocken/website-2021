@@ -1,7 +1,7 @@
-import { IPartner } from "../../lib/partner";
-import Bubble from "../shared/bubble";
-import Link from "../shared/link";
-import styles from "./index.module.scss";
+import { IPartner } from "../lib/partner";
+import Bubble from "./shared/bubble";
+import Link from "./shared/link";
+import styles from "../styles/footer.module.scss";
 import Partner from "./partner";
 import NextImage from "next/image";
 

@@ -1,4 +1,4 @@
-import { getNewsList } from ".";
+import { getNewsList } from "../news";
 import client from "../shared/sanityClient";
 
 describe("News", () => {

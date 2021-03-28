@@ -1,7 +1,7 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import client from "../shared/sanityClient";
-import { urlFor } from "../shared/sanityImageUrl";
-import PartnerCategory from "./category.enum";
+import client from "./shared/sanityClient";
+import { urlFor } from "./shared/sanityImageUrl";
+import PartnerCategory from "./enums/partnerCategory.enum";
 
 export interface IPartner {
   link: string;

@@ -1,4 +1,4 @@
-import client from "../shared/sanityClient";
+import client from "./shared/sanityClient";
 
 export interface NewsLink {
   title: string;

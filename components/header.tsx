@@ -1,6 +1,6 @@
-import { NewsLink } from "../../lib/news";
-import Link from "../shared/link";
-import styles from "./index.module.scss";
+import { NewsLink } from "../lib/news";
+import Link from "./shared/link";
+import styles from "../styles/header.module.scss";
 
 const Header = ({ list }: { list: NewsLink[] }): JSX.Element => {
   return (

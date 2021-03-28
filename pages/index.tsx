@@ -5,7 +5,7 @@ import Header from "../components/header";
 import { getNewsList, NewsLink } from "../lib/news";
 import { getPartnerList, IPartner } from "../lib/partner";
 import styles from "../styles/Home.module.scss";
-import PartnerCategory from "../lib/partner/category.enum";
+import PartnerCategory from "../lib/enums/partnerCategory.enum";
 
 interface HomeProps {
   newsLinkList: NewsLink[];
