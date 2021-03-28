@@ -1,9 +1,9 @@
-import { NewsLink } from "../lib/news";
+import { INewsLink } from "../lib/news";
 import Link from "./shared/link";
 import styles from "../styles/header.module.scss";
 import Label from "./shared/label";
 
-const Header = ({ list }: { list: NewsLink[] }): JSX.Element => {
+const Header = ({ list }: { list: INewsLink[] }): JSX.Element => {
   return (
     <header className="sticky top-0 z-10 bg-white">
       <div
@@ -13,7 +13,7 @@ const Header = ({ list }: { list: NewsLink[] }): JSX.Element => {
         }
       >
         <Label className="flex items-center">NEUES</Label>
-        {list.map((news: NewsLink, index: number) => {
+        {list.map((news: INewsLink, index: number) => {
           return (
             <span className="pt-1" key={news.slug}>
               <Link href="" className="mx-2 sm:mx-4">

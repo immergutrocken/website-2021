@@ -2,13 +2,13 @@ import NextHead from "next/head";
 import NextImage from "next/image";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import { getNewsList, NewsLink } from "../lib/news";
+import { getNewsLinkList, INewsLink } from "../lib/news";
 import { getPartnerList, IPartner } from "../lib/partner";
 import styles from "../styles/Home.module.scss";
 import PartnerCategory from "../lib/enums/partnerCategory.enum";
 
 interface HomeProps {
-  newsLinkList: NewsLink[];
+  newsLinkList: INewsLink[];
   sponsorList: IPartner[];
   mediaPartnerList: IPartner[];
   additionalList: IPartner[];
@@ -19,7 +19,7 @@ export const getStaticProps = async (): Promise<{
 }> => {
   return {
     props: {
-      newsLinkList: await getNewsList(),
+      newsLinkList: await getNewsLinkList(),
       sponsorList: await getPartnerList(PartnerCategory.SPONSOR),
       mediaPartnerList: await getPartnerList(PartnerCategory.MEDIA_PARTNER),
       additionalList: await getPartnerList(PartnerCategory.ADDITIONAL),

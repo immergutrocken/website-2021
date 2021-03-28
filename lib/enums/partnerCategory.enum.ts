@@ -1,7 +1,7 @@
 enum PartnerCategory {
-  ADDITIONAL = "additional",
-  MEDIA_PARTNER = "media-partner",
-  SPONSOR = "sponsor",
+  ADDITIONAL = "additionalPartner",
+  MEDIA_PARTNER = "mediaPartner",
+  SPONSOR = "sponsors",
 }
 
 export default PartnerCategory;

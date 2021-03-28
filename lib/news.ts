@@ -1,19 +1,19 @@
 import client from "./shared/sanityClient";
 
-export interface NewsLink {
+export interface INewsLink {
   title: string;
   slug: string;
 }
 
-export const getNewsList = async (): Promise<NewsLink[]> => {
+export const getNewsLinkList = async (): Promise<INewsLink[]> => {
   const query =
     "*[_type == 'sortings'] {'title': news[]->languages.de.title, 'slug': news[]->slug.current}";
   const result = await client.fetch(query);
-  const newArray = result[0].slug.map(
-    (slug: string, index: number): NewsLink => ({
+  const newsLinkList = result[0].slug.map(
+    (slug: string, index: number): INewsLink => ({
       title: result[0].title[index],
       slug: slug,
     })
   );
-  return newArray;
+  return newsLinkList;
 };

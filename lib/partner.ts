@@ -18,13 +18,15 @@ export interface IPartner {
 export const getPartnerList = async (
   category: PartnerCategory
 ): Promise<IPartner[]> => {
-  const query =
-    "*[_type == 'partner' && category == $category] {'link': link.url, logo}";
-  const params = {
-    category: category,
-  };
-  const result = await client.fetch(query, params);
-  return result.map((p: IPartner) => {
+  const query = `*[_type == 'sortings'] {'link': ${category}[]->link.url, 'logo': ${category}[]->logo}`;
+  const result = await client.fetch(query);
+  const partnerList = result[0].link.map(
+    (link: string, index: number): IPartner => ({
+      link: link,
+      logo: result[0].logo[index],
+    })
+  );
+  return partnerList.map((p: IPartner) => {
     return {
       ...p,
       logo: {
