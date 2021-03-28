@@ -4,6 +4,7 @@ import Link from "./shared/link";
 import styles from "../styles/footer.module.scss";
 import Partner from "./partner";
 import NextImage from "next/image";
+import socialMedia from "../lib/models/socialMedia";
 
 interface FooterProps {
   sponsorList: IPartner[];
@@ -31,42 +32,27 @@ const Footer = ({
   additionalList,
 }: FooterProps): JSX.Element => (
   <>
-    <div className="flex flex-row mt-4 justify-center space-x-4">
-      <Link href="https://open.spotify.com/user/immergut_festival">
-        <Bubble>
-          <NextImage src="/spotify-logo.svg" height="22" width="32" />
-        </Bubble>
-      </Link>
-      <Link href="https://www.youtube.com/immergutfestival">
-        <Bubble>
-          <NextImage src="/youtube-logo.svg" height="32" width="28" />
-        </Bubble>
-      </Link>
-      <Link href="https://www.facebook.com/immergutrocken">
-        <Bubble>
-          <NextImage src="/facebook-logo.svg" height="32" width="28" />
-        </Bubble>
-      </Link>
-      <Link href="https://instagram.com/immergutrocken">
-        <Bubble>
-          <NextImage src="/instagram-logo.svg" height="32" width="28" />
-        </Bubble>
-      </Link>
-      <Link href="https://twitter.com/immergutrocken">
-        <Bubble>
-          <NextImage src="/twitter-logo.svg" height="32" width="28" />
-        </Bubble>
-      </Link>
-      <Link href="https://www.flickr.com/photos/immergutrocken">
-        <Bubble>
-          <NextImage src="/flickr-logo.svg" height="32" width="28" />
-        </Bubble>
-      </Link>
+    <div className="flex flex-row mt-4 justify-center flex-wrap">
+      {socialMedia.map((element, index) => (
+        <Link
+          href={element.url}
+          key={index}
+          className="mx-2 mb-3 sm:mx-3 sm:mb-0"
+        >
+          <Bubble>
+            <NextImage
+              src={element.imageUrl}
+              layout="fill"
+              objectFit="contain"
+            />
+          </Bubble>
+        </Link>
+      ))}
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-3 mt-4 p-3">
-      <Partner title="Sponsor*innen" list={sponsorList} />
-      <Partner title="Medienpartner*innen" list={mediaPartnerList} />
-      <Partner title="Ausserdem" list={additionalList} />
+    <div className="grid grid-cols-1 md:grid-cols-3 mt-2 sm:mt-4 p-3">
+      <Partner label="Sponsor*innen" list={sponsorList} />
+      <Partner label="Medienpartner*innen" list={mediaPartnerList} />
+      <Partner label="Ausserdem" list={additionalList} />
     </div>
     <div className="w-full text-center p-3">
       Made with{" "}
@@ -77,7 +63,7 @@ const Footer = ({
       <Link href="https://www.sanity.io">sanity.io</Link>, hosted by{" "}
       <Link href="https://www.vercel.com">vercel.com</Link>
     </div>
-    <div className="sticky bottom-0 text-4xl p-2 whitespace-nowrap overflow-x-hidden bg-white">
+    <div className="sticky bottom-0 text-lg sm:text-4xl px-2 sm:px-0 sm:py-2 whitespace-nowrap overflow-x-hidden bg-white">
       <div className={styles.ticker}>{buildDateAndLocation(10)}</div>
     </div>
   </>

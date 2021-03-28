@@ -5,10 +5,12 @@ interface BubbleProps {
 
 const Bubble = ({ children, onClick }: BubbleProps): JSX.Element => (
   <button
-    className="bg-black w-14 h-14 rounded-full text-white flex justify-center items-center cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-110"
+    className="bg-black w-9 h-9 sm:w-14 sm:h-14 rounded-full flex justify-center items-center cursor-pointer p-2 sm:p-3 sm:transition-transform sm:duration-300 sm:ease-in-out sm:transform sm:hover:scale-110"
     onClick={onClick ? () => onClick() : () => false}
   >
-    {children}
+    <span className="text-white relative min-h-full min-w-full">
+      {children}
+    </span>
   </button>
 );
 

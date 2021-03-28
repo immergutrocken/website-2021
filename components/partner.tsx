@@ -1,19 +1,16 @@
 import { IPartner } from "../lib/partner";
 import NextImage from "next/image";
+import Label from "./shared/label";
 
 export interface PartnerProps {
-  title: string;
+  label: string;
   className?: string;
   list: IPartner[];
 }
 
-const Partner = ({ title, className, list }: PartnerProps): JSX.Element => (
+const Partner = ({ label, className, list }: PartnerProps): JSX.Element => (
   <div className={className}>
-    <div className="text-center">
-      <span className="border border-black rounded-full px-2 pt-1 uppercase text-xl">
-        {title}
-      </span>
-    </div>
+    <Label>{label}</Label>
     <div className="mt-4">
       {list?.map((partner, index) => (
         <span className="p-3" key={index}>
