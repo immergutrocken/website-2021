@@ -11,7 +11,7 @@ export interface PartnerProps {
 const Partner = ({ label, className, list }: PartnerProps): JSX.Element => (
   <div className={className}>
     <Label>{label}</Label>
-    <div className="mt-4">
+    <div className="mt-4 text-center">
       {list?.map((partner, index) => (
         <span className="p-3" key={index}>
           <a href={partner.link} target="_blank" rel="noreferrer">

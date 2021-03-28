@@ -5,6 +5,7 @@ import styles from "../styles/footer.module.scss";
 import Partner from "./partner";
 import NextImage from "next/image";
 import socialMedia from "../lib/models/socialMedia";
+import NewsletterRegistration from "./newsletterRegistration";
 
 interface FooterProps {
   sponsorList: IPartner[];
@@ -32,6 +33,9 @@ const Footer = ({
   additionalList,
 }: FooterProps): JSX.Element => (
   <>
+    <div className="mt-2 sm:mt-4">
+      <NewsletterRegistration />
+    </div>
     <div className="flex flex-row mt-4 justify-center flex-wrap">
       {socialMedia.map((element, index) => (
         <Link
