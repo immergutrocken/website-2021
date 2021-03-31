@@ -6,12 +6,14 @@ import { getNewsLinkList, INewsLink } from "../lib/news";
 import { getPartnerList, IPartner } from "../lib/partner";
 import styles from "../styles/Home.module.scss";
 import PartnerCategory from "../lib/enums/partnerCategory.enum";
+import { getMenu, IMenuItem } from "../lib/menu";
 
 interface HomeProps {
   newsLinkList: INewsLink[];
   sponsorList: IPartner[];
   mediaPartnerList: IPartner[];
   additionalList: IPartner[];
+  menuItems: IMenuItem[];
 }
 
 export const getStaticProps = async (): Promise<{
@@ -23,6 +25,7 @@ export const getStaticProps = async (): Promise<{
       sponsorList: await getPartnerList(PartnerCategory.SPONSOR),
       mediaPartnerList: await getPartnerList(PartnerCategory.MEDIA_PARTNER),
       additionalList: await getPartnerList(PartnerCategory.ADDITIONAL),
+      menuItems: await getMenu(),
     },
   };
 };
