@@ -46,7 +46,7 @@ export default function Home(props: HomeProps): JSX.Element {
       <div className="hidden sm:block">
         <NextImage
           src="/images/ig-website-desktop-illu2.jpg"
-          width="1140"
+          width="1440"
           height="587"
           layout="responsive"
         />

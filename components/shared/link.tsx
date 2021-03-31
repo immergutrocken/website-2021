@@ -1,5 +1,5 @@
 interface LinkProps {
-  children: any;
+  children: JSX.Element | string;
   title?: string;
   href: string;
   className?: string;
@@ -15,7 +15,7 @@ const Link = ({
     href={href}
     target="_blank"
     rel="noreferrer"
-    className={"hover:underline " + className}
+    className={`hover:underline focus:outline-none ${className}`}
     title={title}
   >
     {children}
