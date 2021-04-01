@@ -37,7 +37,10 @@ export default function Home(props: HomeProps): JSX.Element {
         <title>21. Immergut Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </NextHead>
-      <Header list={props.newsLinkList}></Header>
+      <Header
+        newsLinkList={props.newsLinkList}
+        menuItemList={props.menuItems}
+      ></Header>
       <div className="block sm:hidden">
         <NextImage
           src="/images/ig-website-mobile-illu.jpg"

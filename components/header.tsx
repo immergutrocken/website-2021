@@ -6,8 +6,15 @@ import Bubble from "./shared/bubble";
 import NextImage from "next/image";
 import Menu from "./menu";
 import { useState } from "react";
+import { IMenuItem } from "../lib/menu";
 
-const Header = ({ list }: { list: INewsLink[] }): JSX.Element => {
+const Header = ({
+  newsLinkList,
+  menuItemList,
+}: {
+  newsLinkList: INewsLink[];
+  menuItemList: IMenuItem[];
+}): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -19,13 +26,13 @@ const Header = ({ list }: { list: INewsLink[] }): JSX.Element => {
         }
       >
         <Label className="flex items-center">NEUES</Label>
-        {list.map((news: INewsLink, index: number) => {
+        {newsLinkList.map((news: INewsLink, index: number) => {
           return (
             <span className="pt-1" key={news.slug}>
               <Link href="" className="mx-2 sm:mx-4">
                 {news.title}
               </Link>
-              {index === list.length - 1 ? "" : "•"}
+              {index === newsLinkList.length - 1 ? "" : "•"}
             </span>
           );
         })}
@@ -36,7 +43,11 @@ const Header = ({ list }: { list: INewsLink[] }): JSX.Element => {
       >
         <NextImage src="/burger-menu.svg" layout="fill" objectFit="contain" />
       </Bubble>
-      <Menu showMenu={showMenu} onClose={() => setShowMenu(false)} />
+      <Menu
+        showMenu={showMenu}
+        onClose={() => setShowMenu(false)}
+        items={menuItemList}
+      />
     </header>
   );
 };
