@@ -79,7 +79,7 @@ const buildMenuItems = (
             submenuItems: buildMenuItems(submenu, data),
           };
         default:
-          throw new Error("this type is not implemented");
+          throw new Error(`The type ${type} is not implemented`);
       }
     }
   );
