@@ -53,12 +53,24 @@ const Footer = ({
         </Link>
       ))}
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-3 mt-2 sm:mt-4 p-3">
-      <Partner label="Sponsor*innen" list={sponsorList} />
-      <Partner label="Medienpartner*innen" list={mediaPartnerList} />
-      <Partner label="Ausserdem" list={additionalList} />
+    <div className="grid grid-cols-1 md:grid-cols-3 p-3">
+      <Partner
+        label="Sponsor*innen"
+        list={sponsorList}
+        className="mt-4 sm:mt-6"
+      />
+      <Partner
+        label="Medienpartner*innen"
+        list={mediaPartnerList}
+        className="mt-4 sm:mt-6"
+      />
+      <Partner
+        label="Ausserdem"
+        list={additionalList}
+        className="mt-4 sm:mt-6"
+      />
     </div>
-    <div className="w-full text-center p-3">
+    <div className="w-full text-center p-3 mb-8 sm:mb-16">
       Made with{" "}
       <span role="img" aria-label="heart">
         ❤️

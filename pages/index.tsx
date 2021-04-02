@@ -4,7 +4,7 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import { getNewsLinkList, INewsLink } from "../lib/news";
 import { getPartnerList, IPartner } from "../lib/partner";
-import styles from "../styles/Home.module.scss";
+// import styles from "../styles/Home.module.scss";
 import PartnerCategory from "../lib/enums/partnerCategory.enum";
 import { getMenu, IMenuItem } from "../lib/menu";
 import { getArtistLinkList, IArtistLink } from "../lib/artist";
@@ -66,9 +66,9 @@ export default function Home(props: HomeProps): JSX.Element {
           layout="responsive"
         />
       </div>
-      <div className={`absolute ${styles.logo}`}>
+      {/* <div className={`absolute ${styles.logo}`}>
         <NextImage src="/images/ig-motto-logo1.svg" height={100} width={100} />
-      </div>
+      </div> */}
       <div className="mt-4 sm:mt-6 text-center">
         <Button
           className="mx-2"
@@ -79,7 +79,10 @@ export default function Home(props: HomeProps): JSX.Element {
                 : ArtistCategory.MUSIC
             )
           }
-          active={filterCategory === ArtistCategory.MUSIC}
+          active={
+            filterCategory === ArtistCategory.MUSIC || filterCategory === null
+          }
+          size="small"
         >
           Musik
         </Button>
@@ -92,7 +95,10 @@ export default function Home(props: HomeProps): JSX.Element {
                 : ArtistCategory.READING
             )
           }
-          active={filterCategory === ArtistCategory.READING}
+          active={
+            filterCategory === ArtistCategory.READING || filterCategory === null
+          }
+          size="small"
         >
           Lesung
         </Button>

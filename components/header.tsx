@@ -1,7 +1,6 @@
 import { INewsLink } from "../lib/news";
 import Link from "./shared/link";
 import styles from "../styles/header.module.scss";
-import Label from "./shared/label";
 import Bubble from "./shared/bubble";
 import NextImage from "next/image";
 import Menu from "./menu";
@@ -18,14 +17,14 @@ const Header = ({
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="fixed max-w-full top-0 z-10 bg-white">
+    <header className="fixed max-w-full top-0 z-10 bg-white flex flex-nowrap text-lg sm:text-4xl pt-1">
+      <span className="flex items-center px-1 sm:px-2">NEUES:</span>
       <div
         className={
-          "flex flex-nowrap text-lg sm:text-4xl px-1 overflow-x-auto overflow-y-hidden whitespace-nowrap w-full " +
+          "flex flex-nowrap overflow-x-auto overflow-y-hidden whitespace-nowrap w-full " +
           styles.scrollbar
         }
       >
-        <Label className="flex items-center">NEUES</Label>
         {newsLinkList.map((news: INewsLink, index: number) => {
           return (
             <span className="pt-1" key={news.slug}>
