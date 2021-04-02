@@ -17,7 +17,7 @@ const Header = ({
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="fixed max-w-full top-0 z-10 bg-white flex flex-nowrap text-lg sm:text-4xl pt-1">
+    <header className="fixed w-full top-0 z-10 bg-white flex flex-nowrap text-lg sm:text-4xl pt-1">
       <span className="flex items-center px-1 sm:px-2">NEUES:</span>
       <div
         className={
