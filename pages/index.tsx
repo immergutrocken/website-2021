@@ -1,65 +1,127 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.scss";
+import NextHead from "next/head";
+import NextImage from "next/image";
+import Footer from "../components/footer";
+import Header from "../components/header";
+import { getNewsLinkList, INewsLink } from "../lib/news";
+import { getPartnerList, IPartner } from "../lib/partner";
+// import styles from "../styles/Home.module.scss";
+import PartnerCategory from "../lib/enums/partnerCategory.enum";
+import { getMenu, IMenuItem } from "../lib/menu";
+import { getArtistLinkList, IArtistLink } from "../lib/artist";
+import NextLink from "next/link";
+import Button from "../components/shared/button";
+import { useState } from "react";
+import { ArtistCategory } from "../lib/enums/artistCategory.enum";
 
-export default function Home(): JSX.Element {
+interface HomeProps {
+  newsLinkList: INewsLink[];
+  sponsorList: IPartner[];
+  mediaPartnerList: IPartner[];
+  additionalList: IPartner[];
+  menuItems: IMenuItem[];
+  artistLinkList: IArtistLink[];
+}
+
+export const getStaticProps = async (): Promise<{
+  props: HomeProps;
+}> => {
+  return {
+    props: {
+      newsLinkList: await getNewsLinkList(),
+      sponsorList: await getPartnerList(PartnerCategory.SPONSOR),
+      mediaPartnerList: await getPartnerList(PartnerCategory.MEDIA_PARTNER),
+      additionalList: await getPartnerList(PartnerCategory.ADDITIONAL),
+      menuItems: await getMenu(),
+      artistLinkList: await getArtistLinkList(),
+    },
+  };
+};
+
+export default function Home(props: HomeProps): JSX.Element {
+  const [filterCategory, setFilterCategory] = useState<ArtistCategory>(null);
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
+    <div className="">
+      <NextHead>
+        <title>21. Immergut Festival</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </NextHead>
+      <Header
+        newsLinkList={props.newsLinkList}
+        menuItemList={props.menuItems}
+      ></Header>
+      <div className="block sm:hidden">
+        <NextImage
+          src="/images/ig-website-mobile-illu.jpg"
+          width="320"
+          height="455"
+          layout="responsive"
+        />
+      </div>
+      <div className="hidden sm:block">
+        <NextImage
+          src="/images/ig-website-desktop-illu2.jpg"
+          width="1440"
+          height="587"
+          layout="responsive"
+        />
+      </div>
+      {/* <div className={`absolute ${styles.logo}`}>
+        <NextImage src="/images/ig-motto-logo1.svg" height={100} width={100} />
+      </div> */}
+      <div className="mt-4 sm:mt-6 text-center">
+        <Button
+          className="mx-2"
+          onClick={() =>
+            setFilterCategory(
+              filterCategory === ArtistCategory.MUSIC
+                ? null
+                : ArtistCategory.MUSIC
+            )
+          }
+          active={
+            filterCategory === ArtistCategory.MUSIC || filterCategory === null
+          }
+          size="small"
         >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+          Musik
+        </Button>
+        <Button
+          className="mx-2"
+          onClick={() =>
+            setFilterCategory(
+              filterCategory === ArtistCategory.READING
+                ? null
+                : ArtistCategory.READING
+            )
+          }
+          active={
+            filterCategory === ArtistCategory.READING || filterCategory === null
+          }
+          size="small"
+        >
+          Lesung
+        </Button>
+      </div>
+      <div className="mt-4 sm:mt-6 text-4xl sm:text-6xl text-center flex flex-row flex-wrap justify-center">
+        {props.artistLinkList
+          .filter((link) =>
+            filterCategory === null ? true : link.category === filterCategory
+          )
+          .map((link, index, array) => (
+            <span key={index}>
+              <NextLink href={`/artist/${link.slug}`}>
+                <a className="sm:mx-5">{link.title}</a>
+              </NextLink>
+              {index === array.length - 1 ? "" : "•"}
+            </span>
+          ))}
+      </div>
+      <Footer
+        sponsorList={props.sponsorList}
+        mediaPartnerList={props.mediaPartnerList}
+        additionalList={props.additionalList}
+      />
     </div>
   );
 }
