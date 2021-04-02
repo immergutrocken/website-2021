@@ -1,10 +1,8 @@
 import NextHead from "next/head";
 import NextImage from "next/image";
 import Footer from "../components/footer";
-import Header from "../components/header";
 import { getNewsLinkList, INewsLink } from "../lib/news";
 import { getPartnerList, IPartner } from "../lib/partner";
-// import styles from "../styles/Home.module.scss";
 import PartnerCategory from "../lib/enums/partnerCategory.enum";
 import { getMenu, IMenuItem } from "../lib/menu";
 import { getArtistLinkList, IArtistLink } from "../lib/artist";
@@ -12,6 +10,9 @@ import NextLink from "next/link";
 import Button from "../components/shared/button";
 import { useState } from "react";
 import { ArtistCategory } from "../lib/enums/artistCategory.enum";
+import Bubble from "../components/shared/bubble";
+import Menu from "../components/menu";
+import Layout from "../components/layout";
 
 interface HomeProps {
   newsLinkList: INewsLink[];
@@ -39,17 +40,25 @@ export const getStaticProps = async (): Promise<{
 
 export default function Home(props: HomeProps): JSX.Element {
   const [filterCategory, setFilterCategory] = useState<ArtistCategory>(null);
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="">
+    <Layout newsLinkList={props.newsLinkList}>
       <NextHead>
         <title>21. Immergut Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </NextHead>
-      <Header
-        newsLinkList={props.newsLinkList}
-        menuItemList={props.menuItems}
-      ></Header>
+      <Bubble
+        className="fixed left-1 top-12 sm:left-2 sm:top-16 z-10"
+        onClick={() => setShowMenu(true)}
+      >
+        <NextImage src="/burger-menu.svg" layout="fill" objectFit="contain" />
+      </Bubble>
+      <Menu
+        showMenu={showMenu}
+        onClose={() => setShowMenu(false)}
+        items={props.menuItems}
+      />
       <div className="block sm:hidden">
         <NextImage
           src="/images/ig-website-mobile-illu.jpg"
@@ -122,6 +131,6 @@ export default function Home(props: HomeProps): JSX.Element {
         mediaPartnerList={props.mediaPartnerList}
         additionalList={props.additionalList}
       />
-    </div>
+    </Layout>
   );
 }

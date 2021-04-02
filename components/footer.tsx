@@ -1,7 +1,6 @@
 import { IPartner } from "../lib/partner";
 import Bubble from "./shared/bubble";
 import Link from "./shared/link";
-import styles from "../styles/footer.module.scss";
 import Partner from "./partner";
 import NextImage from "next/image";
 import socialMedia from "../lib/models/socialMedia";
@@ -12,20 +11,6 @@ interface FooterProps {
   mediaPartnerList: IPartner[];
   additionalList: IPartner[];
 }
-
-const buildDateAndLocation = (times: number): JSX.Element => {
-  const tempArray = [];
-  for (let index = 0; index < times; index++) {
-    tempArray.push(index);
-  }
-  return (
-    <>
-      {tempArray.map((index) => (
-        <span key={index}>26.-28.08.2021 • Neustrelitz • </span>
-      ))}
-    </>
-  );
-};
 
 const Footer = ({
   sponsorList,
@@ -78,9 +63,6 @@ const Footer = ({
       , structured content powered by{" "}
       <Link href="https://www.sanity.io">sanity.io</Link>, hosted by{" "}
       <Link href="https://www.vercel.com">vercel.com</Link>
-    </div>
-    <div className="fixed bottom-0 text-lg sm:text-4xl px-2 sm:px-0 sm:py-2 whitespace-nowrap overflow-x-hidden bg-white">
-      <div className={styles.ticker}>{buildDateAndLocation(10)}</div>
     </div>
   </>
 );

@@ -44,7 +44,7 @@ const Menu = ({
   const displayClass = showMenu ? "block" : "hidden";
   return (
     <div
-      className={`w-full px-2 overflow-y-auto sm:w-1/2 bg-white absolute z-20 top-8 sm:top-11 left-0 bo menu-panel ${displayClass} ${styles.menuPanel}`}
+      className={`w-full px-2 overflow-y-auto sm:w-1/2 bg-white fixed z-20 top-8 sm:top-11 left-0 bo menu-panel ${displayClass} ${styles.menuPanel}`}
     >
       <Bubble className="absolute top-3 right-3" onClick={() => onClose()}>
         <NextImage src="/close.svg" layout="fill" objectFit="contain" />

@@ -7,6 +7,10 @@ export interface IArtistLink {
   category: ArtistCategory;
 }
 
+export interface IArtist {
+  title: string;
+}
+
 const categoryMapping = new Map<string, ArtistCategory>([
   ["music", ArtistCategory.MUSIC],
   ["reading", ArtistCategory.READING],
@@ -23,4 +27,10 @@ export const getArtistLinkList = async (): Promise<IArtistLink[]> => {
       category: categoryMapping.get(result[0].categories[index]),
     })
   );
+};
+
+export const getArtist = async (slug: string): Promise<IArtist> => {
+  const query = `*[_type == 'artist' && slug.current == '${slug}']{'title': languages.de.title}`;
+  const result = await client.fetch(query);
+  return result[0];
 };

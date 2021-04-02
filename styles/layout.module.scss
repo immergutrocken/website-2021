@@ -1,3 +1,11 @@
+.scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .ticker {
   animation: ticker-kf 40s linear infinite;
 }
