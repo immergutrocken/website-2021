@@ -8,6 +8,7 @@ import Layout from "../../components/layout";
 import { getArtist, getArtistLinkList, IArtist } from "../../lib/artist";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
 import NextImage from "next/image";
+import Label from "../../components/shared/label";
 
 interface ArtistParams extends ParsedUrlQuery {
   slug: string;
@@ -46,15 +47,40 @@ export const getStaticProps = async ({
   };
 };
 
-const Artist = ({ title, newsLinkList, banner }: ArtistProps): JSX.Element => {
+const Artist = ({
+  title,
+  newsLinkList,
+  banner,
+  author,
+}: ArtistProps): JSX.Element => {
   return (
     <Layout newsLinkList={newsLinkList}>
       <div className="grid grid-cols-1 sm:grid-cols-2 content-height sm:space-x-5">
         <div className="relative h-full">
-          <NextImage src={banner.urlWithBlur} layout="fill" objectFit="cover" />
-          <NextImage src={banner.url} layout="fill" objectFit="contain" />
+          <NextImage
+            src={banner.urlWithBlur}
+            layout="fill"
+            objectFit="cover"
+            alt={banner.alt}
+          />
+          <NextImage
+            src={banner.url}
+            layout="fill"
+            objectFit="contain"
+            alt={banner.alt}
+          />
         </div>
-        <div>{title}</div>
+        <div className="pt-5 px-4">
+          <div className="text-4xl">{title}</div>
+          <div className="flex flex-row space-x-4 mt-5">
+            <Label>Foto</Label>
+            <span>{banner.credits}</span>
+          </div>
+          <div className="flex flex-row space-x-4 mt-2">
+            <Label>Text</Label>
+            <span>{author}</span>
+          </div>
+        </div>
       </div>
     </Layout>
   );

@@ -18,6 +18,7 @@ export interface IArtist {
     url: string;
     urlWithBlur: string;
   };
+  author: string;
 }
 
 const categoryMapping = new Map<string, ArtistCategory>([
@@ -39,7 +40,7 @@ export const getArtistLinkList = async (): Promise<IArtistLink[]> => {
 };
 
 export const getArtist = async (slug: string): Promise<IArtist> => {
-  const query = `*[_type == 'artist' && slug.current == '${slug}']{'title': languages.de.title, 'banner': languages.de.banner}`;
+  const query = `*[_type == 'artist' && slug.current == '${slug}']{'title': languages.de.title, 'banner': languages.de.banner, author}`;
   const result = (await client.fetch(query))[0];
   return {
     ...result,
