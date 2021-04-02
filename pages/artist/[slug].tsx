@@ -5,14 +5,15 @@ import {
 } from "next";
 import { ParsedUrlQuery } from "node:querystring";
 import Layout from "../../components/layout";
-import { getArtist, getArtistLinkList } from "../../lib/artist";
+import { getArtist, getArtistLinkList, IArtist } from "../../lib/artist";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
+import NextImage from "next/image";
 
 interface ArtistParams extends ParsedUrlQuery {
   slug: string;
 }
 
-interface ArtistProps {
+interface ArtistProps extends IArtist {
   title: string;
   newsLinkList: INewsLink[];
 }
@@ -39,14 +40,24 @@ export const getStaticProps = async ({
   const artist = await getArtist(params.slug);
   return {
     props: {
-      title: artist.title,
+      ...artist,
       newsLinkList: await getNewsLinkList(),
     },
   };
 };
 
-const Artist = ({ title, newsLinkList }: ArtistProps): JSX.Element => {
-  return <Layout newsLinkList={newsLinkList}>{title}</Layout>;
+const Artist = ({ title, newsLinkList, banner }: ArtistProps): JSX.Element => {
+  return (
+    <Layout newsLinkList={newsLinkList}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 content-height sm:space-x-5">
+        <div className="relative h-full">
+          <NextImage src={banner.urlWithBlur} layout="fill" objectFit="cover" />
+          <NextImage src={banner.url} layout="fill" objectFit="contain" />
+        </div>
+        <div>{title}</div>
+      </div>
+    </Layout>
+  );
 };
 
 export default Artist;

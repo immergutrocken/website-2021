@@ -1,6 +1,5 @@
 import Bubble from "./shared/bubble";
 import NextImage from "next/image";
-import styles from "../styles/menu.module.scss";
 import { IMenuItem } from "../lib/menu";
 import { MenuItemType } from "../lib/enums/menuItemType.enum";
 import Link from "./shared/link";
@@ -44,7 +43,7 @@ const Menu = ({
   const displayClass = showMenu ? "block" : "hidden";
   return (
     <div
-      className={`w-full px-2 overflow-y-auto sm:w-1/2 bg-white fixed z-20 top-8 sm:top-11 left-0 bo menu-panel ${displayClass} ${styles.menuPanel}`}
+      className={`w-full px-2 overflow-y-auto sm:w-1/2 bg-white fixed z-20 top-8 sm:top-11 left-0 content-height ${displayClass}`}
     >
       <Bubble className="absolute top-3 right-3" onClick={() => onClose()}>
         <NextImage src="/close.svg" layout="fill" objectFit="contain" />

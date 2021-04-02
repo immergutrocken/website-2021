@@ -1,5 +1,7 @@
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { ArtistCategory } from "./enums/artistCategory.enum";
 import client from "./shared/sanityClient";
+import { urlFor } from "./shared/sanityImageUrl";
 
 export interface IArtistLink {
   title: string;
@@ -9,6 +11,13 @@ export interface IArtistLink {
 
 export interface IArtist {
   title: string;
+  banner: {
+    alt: string;
+    asset: SanityImageSource;
+    credits: string;
+    url: string;
+    urlWithBlur: string;
+  };
 }
 
 const categoryMapping = new Map<string, ArtistCategory>([
@@ -30,7 +39,14 @@ export const getArtistLinkList = async (): Promise<IArtistLink[]> => {
 };
 
 export const getArtist = async (slug: string): Promise<IArtist> => {
-  const query = `*[_type == 'artist' && slug.current == '${slug}']{'title': languages.de.title}`;
-  const result = await client.fetch(query);
-  return result[0];
+  const query = `*[_type == 'artist' && slug.current == '${slug}']{'title': languages.de.title, 'banner': languages.de.banner}`;
+  const result = (await client.fetch(query))[0];
+  return {
+    ...result,
+    banner: {
+      ...result.banner,
+      url: urlFor(result.banner.asset).height(1000).url(),
+      urlWithBlur: urlFor(result.banner.asset).blur(200).height(1000).url(),
+    },
+  };
 };
