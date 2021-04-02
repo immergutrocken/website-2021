@@ -33,7 +33,7 @@ const Footer = ({
   additionalList,
 }: FooterProps): JSX.Element => (
   <>
-    <div className="mt-2 sm:mt-4">
+    <div className="mt-12 sm:mt-20">
       <NewsletterRegistration />
     </div>
     <div className="flex flex-row mt-4 justify-center flex-wrap">
@@ -67,7 +67,7 @@ const Footer = ({
       <Link href="https://www.sanity.io">sanity.io</Link>, hosted by{" "}
       <Link href="https://www.vercel.com">vercel.com</Link>
     </div>
-    <div className="sticky bottom-0 text-lg sm:text-4xl px-2 sm:px-0 sm:py-2 whitespace-nowrap overflow-x-hidden bg-white">
+    <div className="fixed bottom-0 text-lg sm:text-4xl px-2 sm:px-0 sm:py-2 whitespace-nowrap overflow-x-hidden bg-white">
       <div className={styles.ticker}>{buildDateAndLocation(10)}</div>
     </div>
   </>

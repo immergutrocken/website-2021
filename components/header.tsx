@@ -18,7 +18,7 @@ const Header = ({
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="sticky top-0 z-10 bg-white">
+    <header className="fixed max-w-full top-0 z-10 bg-white">
       <div
         className={
           "flex flex-nowrap text-lg sm:text-4xl px-1 overflow-x-auto overflow-y-hidden whitespace-nowrap w-full " +
