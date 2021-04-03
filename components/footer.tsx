@@ -55,14 +55,21 @@ const Footer = ({
         className="mt-4 sm:mt-6"
       />
     </div>
-    <div className="w-full text-center p-3 mb-8 sm:mb-16 font-content">
-      Made with{" "}
-      <span role="img" aria-label="heart">
-        ❤️
-      </span>
-      , structured content powered by{" "}
-      <Link href="https://www.sanity.io">sanity.io</Link>, hosted by{" "}
-      <Link href="https://www.vercel.com">vercel.com</Link>
+    <div className="w-full text-center p-3 mb-8 sm:mb-16 font-content mx-auto max-w-3xl">
+      <p>
+        Immergut Festival / Am Bürgerseeweg 29 / Neustrelitz Programmänderungen
+        bleiben dem Immergutrocken e.V. als Veranstalter vorbehalten. Auf der
+        Veranstaltungsfläche gilt die Hausordnung laut Aushang.
+      </p>
+      <p className="mt-5">
+        Made with{" "}
+        <span role="img" aria-label="heart">
+          ❤️
+        </span>
+        , structured content powered by{" "}
+        <Link href="https://www.sanity.io">sanity.io</Link>, hosted by{" "}
+        <Link href="https://www.vercel.com">vercel.com</Link>
+      </p>
     </div>
   </>
 );
