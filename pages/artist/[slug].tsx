@@ -13,13 +13,13 @@ import Bubble from "../../components/shared/bubble";
 import Link from "../../components/shared/link";
 import { SocialMedia } from "../../lib/enums/socialMedia.enum";
 import BlockContent from "@sanity/block-content-to-react";
+import NextLink from "next/link";
 
 interface ArtistParams extends ParsedUrlQuery {
   slug: string;
 }
 
 interface ArtistProps extends IArtist {
-  title: string;
   newsLinkList: INewsLink[];
 }
 
@@ -63,16 +63,6 @@ const imageMapping = new Map<SocialMedia, string>([
   [SocialMedia.LABEL, "/facebook-logo.svg"],
 ]);
 
-const Paragraph = (props): JSX.Element => (
-  <p className="mb-4">{props.children}</p>
-);
-
-const serializers = {
-  types: {
-    block: Paragraph,
-  },
-};
-
 const Artist = ({
   title,
   newsLinkList,
@@ -81,12 +71,17 @@ const Artist = ({
   socialMedia,
   content,
 }: ArtistProps): JSX.Element => {
-  console.log(content);
-
   return (
     <Layout newsLinkList={newsLinkList}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 content-height sm:space-x-5">
-        <div className="sticky h-full">
+      <NextLink href="/">
+        <a className="fixed top-10 sm:top-14 right-2 sm:right-5 z-10">
+          <Bubble>
+            <NextImage src="/close.svg" layout="fill" objectFit="contain" />
+          </Bubble>
+        </a>
+      </NextLink>
+      <div className="grid grid-cols-1 h-full sm:grid-cols-2 sm:space-x-5">
+        <div className="relative sm:sticky sm:top-12 content-height">
           <NextImage
             src={banner.urlWithBlur}
             layout="fill"
@@ -100,7 +95,7 @@ const Artist = ({
             alt={banner.alt}
           />
         </div>
-        <div className="pt-5 px-4">
+        <div className="py-5 px-4">
           <h1 className="text-4xl sm:text-7xl sm:text-center">{title}</h1>
           <div className="flex flex-row space-x-4 mt-5 sm:mt-8 sm:justify-center sm:text-3xl">
             <Label>Foto</Label>
@@ -127,8 +122,8 @@ const Artist = ({
               </Link>
             ))}
           </div>
-          <div className="mt-5 font-content">
-            <BlockContent blocks={content} serializers={serializers} />
+          <div className="mt-5 font-content sm:text-center">
+            <BlockContent blocks={content} />
           </div>
         </div>
       </div>

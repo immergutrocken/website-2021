@@ -60,8 +60,6 @@ export const getArtistLinkList = async (): Promise<IArtistLink[]> => {
 export const getArtist = async (slug: string): Promise<IArtist> => {
   const query = `*[_type == 'artist' && slug.current == '${slug}']{'title': languages.de.title, 'banner': languages.de.banner, author, socialMedia, 'content': languages.de.content}`;
   const result = (await client.fetch(query))[0];
-  console.log();
-
   return {
     ...result,
     banner: {

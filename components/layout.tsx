@@ -22,7 +22,7 @@ const buildDateAndLocation = (times: number): JSX.Element => {
 };
 
 const Layout = ({ children, newsLinkList }: LayoutProps): JSX.Element => (
-  <div className="pt-8 sm:pt-12">
+  <div className="py-8 sm:py-12">
     <header className="fixed w-full top-0 z-10 bg-white flex flex-nowrap text-lg sm:text-4xl pt-1">
       <span className="flex items-center px-1 sm:px-2">NEUES:</span>
       <div
