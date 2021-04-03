@@ -13,6 +13,9 @@ import Label from "../../components/shared/label";
 import Bubble from "../../components/shared/bubble";
 import NextImage from "next/image";
 import BlockContent from "@sanity/block-content-to-react";
+import ImageGallery from "../../components/shared/imageGallery";
+import InternalLink from "../../components/shared/internalLink";
+import Youtube from "../../components/shared/youtube";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -48,6 +51,16 @@ export const getStaticProps = async ({
       newsLinkList: await getNewsLinkList(),
     },
   };
+};
+
+const serializers = {
+  types: {
+    imageGallery: ImageGallery,
+    youtube: Youtube,
+  },
+  marks: {
+    internalLink: InternalLink,
+  },
 };
 
 const Article = ({
@@ -92,7 +105,12 @@ const Article = ({
             <span>{author}</span>
           </div>
           <div className="mt-5 font-content">
-            <BlockContent blocks={content} />
+            <BlockContent
+              blocks={content}
+              serializers={serializers}
+              projectId={process.env.SANITY_PROJECT_ID}
+              dataset={process.env.SANITY_DATASET}
+            />
           </div>
         </div>
       </div>
