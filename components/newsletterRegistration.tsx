@@ -6,7 +6,7 @@ const NewsletterRegistration = (): JSX.Element => (
     <div className="flex flex-row space-x-2 justify-center">
       <input
         className="text-lg sm:text-3xl bg-gray-200 text-white rounded-full px-4 sm:px-6 pt-1 sm:pt-2 placeholder-current focus:outline-none"
-        placeholder="Deine Email-Adresse"
+        placeholder="Deine E-Mail-Adresse"
         type="text"
         disabled={true}
       />
