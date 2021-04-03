@@ -6,6 +6,13 @@ import {
 import { ParsedUrlQuery } from "node:querystring";
 import { getArticle, getArticleSlugList, IArticle } from "../../lib/article";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
+import Layout from "../../components/layout";
+import NextLink from "next/link";
+import React from "react";
+import Label from "../../components/shared/label";
+import Bubble from "../../components/shared/bubble";
+import NextImage from "next/image";
+import BlockContent from "@sanity/block-content-to-react";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -43,8 +50,56 @@ export const getStaticProps = async ({
   };
 };
 
-const Article = ({ title }: ArticleProps): JSX.Element => {
-  return <div>{title}</div>;
+const Article = ({
+  title,
+  newsLinkList,
+  banner,
+  content,
+  author,
+}: ArticleProps): JSX.Element => {
+  console.log(content);
+
+  return (
+    <Layout newsLinkList={newsLinkList}>
+      <NextLink href="/">
+        <a className="fixed top-10 sm:top-14 right-2 sm:right-5 z-10">
+          <Bubble>
+            <NextImage src="/close.svg" layout="fill" objectFit="contain" />
+          </Bubble>
+        </a>
+      </NextLink>
+      <div className="grid grid-cols-1 h-full sm:grid-cols-2 sm:space-x-5">
+        <div className="relative sm:sticky sm:top-12 content-height">
+          <NextImage
+            src={banner.urlWithBlur}
+            layout="fill"
+            objectFit="cover"
+            alt={banner.alt}
+          />
+          <NextImage
+            src={banner.url}
+            layout="fill"
+            objectFit="contain"
+            alt={banner.alt}
+          />
+        </div>
+        <div className="py-5 px-4">
+          <h1 className="text-4xl sm:text-7xl">{title}</h1>
+          <div className="flex flex-row space-x-4 mt-5 sm:mt-8 sm:text-3xl">
+            <Label>Foto</Label>
+            <span>{banner.credits}</span>
+          </div>
+          <div className="flex flex-row space-x-4 mt-2 sm:mt-4 sm:text-3xl">
+            <Label>Text</Label>
+            <span>{author}</span>
+          </div>
+          <div className="mt-5 font-content">
+            <BlockContent blocks={content} />
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
 };
 
 export default Article;
