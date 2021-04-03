@@ -55,7 +55,7 @@ const Footer = ({
         className="mt-4 sm:mt-6"
       />
     </div>
-    <div className="w-full text-center p-3 mb-8 sm:mb-16">
+    <div className="w-full text-center p-3 mb-8 sm:mb-16 font-content">
       Made with{" "}
       <span role="img" aria-label="heart">
         ❤️
