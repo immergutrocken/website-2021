@@ -81,7 +81,7 @@ const Artist = ({
         </a>
       </NextLink>
       <div className="grid grid-cols-1 h-full sm:grid-cols-2 sm:space-x-5">
-        <div className="relative sm:sticky sm:top-12 content-height">
+        <div className="relative sm:sticky sm:top-12 half-content-height sm:content-height">
           <NextImage
             src={banner.urlWithBlur}
             layout="fill"

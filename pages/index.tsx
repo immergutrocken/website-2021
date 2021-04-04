@@ -49,7 +49,7 @@ export default function Home(props: HomeProps): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </NextHead>
       <Bubble
-        className="fixed left-1 top-12 sm:left-2 sm:top-16 z-10"
+        className="fixed left-1 top-9 sm:left-2 sm:top-14 z-10"
         onClick={() => setShowMenu(true)}
       >
         <NextImage src="/burger-menu.svg" layout="fill" objectFit="contain" />
