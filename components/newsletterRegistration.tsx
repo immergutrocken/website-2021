@@ -10,6 +10,13 @@ const NewsletterRegistration = (): JSX.Element => {
     const eMailRegex = new RegExp("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$");
     if (eMailAddress !== "" && eMailRegex.test(eMailAddress)) {
       setIsValid(true);
+      fetch(`${window.location.origin}/api/send-optin-email`, {
+        method: "POST",
+        body: JSON.stringify({
+          eMailAddress,
+          origin: window.location.origin,
+        }),
+      }).then(() => setEMailAddress(""));
     } else {
       setIsValid(false);
     }
