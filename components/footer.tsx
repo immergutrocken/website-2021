@@ -61,7 +61,7 @@ const Footer = ({
         bleiben dem Immergutrocken e.V. als Veranstalter vorbehalten. Auf der
         Veranstaltungsfläche gilt die Hausordnung laut Aushang.
       </p>
-      <p className="mt-5">
+      <p className="mt-4">
         Made with{" "}
         <span role="img" aria-label="heart">
           ❤️
