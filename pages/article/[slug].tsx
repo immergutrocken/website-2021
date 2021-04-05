@@ -59,6 +59,7 @@ const Article = ({
   content,
   author,
 }: ArticleProps): JSX.Element => {
+  console.log(title);
   return (
     <Layout newsLinkList={newsLinkList}>
       <NextHead>
