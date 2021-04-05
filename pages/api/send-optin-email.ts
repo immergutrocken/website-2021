@@ -1,7 +1,6 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from "next";
-import mailjet from "node-mailjet";
 import sha256 from "crypto-js/sha256";
+import client from "../../lib/shared/mailjetClient";
 
 interface IBody {
   origin: string;
@@ -13,14 +12,9 @@ export default async (
   res: NextApiResponse
 ): Promise<void> => {
   const body = JSON.parse(req.body) as IBody;
-  const link = `${body.origin}/newsletter?email=${
+  const link = `${body.origin}/newsletter-confirmation?email=${
     body.eMailAddress
   }&sha=${sha256(body.eMailAddress)}`;
-
-  const client = mailjet.connect(
-    process.env.MAILJET_PUBLIC_API_KEY,
-    process.env.MAILJET_PRIVATE_API_KEY
-  );
 
   const request = client.post("send", { version: "v3.1" }).request({
     Messages: [
@@ -60,6 +54,6 @@ export default async (
     })
     .catch((error) => {
       console.log(error);
-      res.status(400).json(error);
+      res.status(500).json(error);
     });
 };
