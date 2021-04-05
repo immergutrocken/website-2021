@@ -5,6 +5,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       content: ["Libre Baskerville"],
+      milona: ["Milona"],
     },
   },
   variants: {

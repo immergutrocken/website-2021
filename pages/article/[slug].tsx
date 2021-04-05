@@ -11,12 +11,9 @@ import NextLink from "next/link";
 import Label from "../../components/shared/label";
 import Bubble from "../../components/shared/bubble";
 import NextImage from "next/image";
-import BlockContent from "@sanity/block-content-to-react";
-import ImageGallery from "../../components/shared/imageGallery";
-import InternalLink from "../../components/shared/internalLink";
-import Youtube from "../../components/shared/youtube";
-import Expander from "../../components/shared/expander";
 import styles from "../../styles/detail.module.scss";
+import NextHead from "next/head";
+import Content from "../../components/block-content/content";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -54,17 +51,6 @@ export const getStaticProps = async ({
   };
 };
 
-const serializers = {
-  types: {
-    imageGallery: ImageGallery,
-    youtube: Youtube,
-    expander: Expander,
-  },
-  marks: {
-    internalLink: InternalLink,
-  },
-};
-
 const Article = ({
   title,
   newsLinkList,
@@ -74,6 +60,9 @@ const Article = ({
 }: ArticleProps): JSX.Element => {
   return (
     <Layout newsLinkList={newsLinkList}>
+      <NextHead>
+        <title>{`${title} - 21. Immergut Festival`}</title>
+      </NextHead>
       <NextLink href="/">
         <a className="fixed top-10 sm:top-14 right-2 sm:right-5 z-10">
           <Bubble>
@@ -107,12 +96,7 @@ const Article = ({
             <span>{author}</span>
           </div>
           <div className="mt-5 font-content">
-            <BlockContent
-              blocks={content}
-              serializers={serializers}
-              projectId={process.env.SANITY_PROJECT_ID}
-              dataset={process.env.SANITY_DATASET}
-            />
+            <Content content={content} />
           </div>
         </div>
       </div>
