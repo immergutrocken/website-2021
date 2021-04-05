@@ -15,7 +15,7 @@ const Link = ({
     href={href}
     target="_blank"
     rel="noreferrer"
-    className={`hover:underline focus:outline-none ${className}`}
+    className={`hover:underline focus:outline-none ${className} font-bold`}
     title={title}
   >
     {children}
