@@ -1,0 +1,9 @@
+.contentHeight {
+  height: calc(100vh - 3.75rem);
+}
+
+@media screen and (min-width: 640px) {
+  .contentHeight {
+    height: calc(100vh - 6.25rem);
+  }
+}
