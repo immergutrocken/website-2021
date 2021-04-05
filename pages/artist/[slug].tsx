@@ -15,6 +15,7 @@ import { SocialMedia } from "../../lib/enums/socialMedia.enum";
 import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
 import styles from "../../styles/detail.module.scss";
+import NextHead from "next/head";
 
 interface ArtistParams extends ParsedUrlQuery {
   slug: string;
@@ -74,6 +75,9 @@ const Artist = ({
 }: ArtistProps): JSX.Element => {
   return (
     <Layout newsLinkList={newsLinkList}>
+      <NextHead>
+        <title>{`${title} - 21. Immergut Festival`}</title>
+      </NextHead>
       <NextLink href="/">
         <a className="fixed top-10 sm:top-14 right-2 sm:right-5 z-10">
           <Bubble>

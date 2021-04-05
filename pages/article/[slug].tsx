@@ -18,6 +18,7 @@ import InternalLink from "../../components/shared/internalLink";
 import Youtube from "../../components/shared/youtube";
 import Expander from "../../components/shared/expander";
 import styles from "../../styles/detail.module.scss";
+import NextHead from "next/head";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -26,6 +27,17 @@ interface ArticleParams extends ParsedUrlQuery {
 interface ArticleProps extends IArticle {
   newsLinkList: INewsLink[];
 }
+
+const serializers = {
+  types: {
+    imageGallery: ImageGallery,
+    youtube: Youtube,
+    expander: Expander,
+  },
+  marks: {
+    internalLink: InternalLink,
+  },
+};
 
 export const getStaticPaths = async (): Promise<
   GetStaticPathsResult<ArticleParams>
@@ -55,17 +67,6 @@ export const getStaticProps = async ({
   };
 };
 
-const serializers = {
-  types: {
-    imageGallery: ImageGallery,
-    youtube: Youtube,
-    expander: Expander,
-  },
-  marks: {
-    internalLink: InternalLink,
-  },
-};
-
 const Article = ({
   title,
   newsLinkList,
@@ -75,6 +76,9 @@ const Article = ({
 }: ArticleProps): JSX.Element => {
   return (
     <Layout newsLinkList={newsLinkList}>
+      <NextHead>
+        <title>{`${title} - 21. Immergut Festival`}</title>
+      </NextHead>
       <NextLink href="/">
         <a className="fixed top-10 sm:top-14 right-2 sm:right-5 z-10">
           <Bubble>
