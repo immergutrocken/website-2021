@@ -12,23 +12,13 @@ export default async (
   console.log(sha);
   console.log(sha256(fixedEmail).toString());
   if (sha256(fixedEmail.replace(" ", "+")).toString() === sha) {
-    const createContactRequest = client
-      .post("contact")
-      .request({ Email: fixedEmail });
-    await createContactRequest
-      .then(async () => {
-        const addToContactList = client.post("listrecipient").request({
-          ContactAlt: fixedEmail,
-          ListID: process.env.MAILJET_LIST_ID,
-        });
-        await addToContactList
-          .then(() => {
-            res.status(200).json({});
-          })
-          .catch((error) => {
-            console.log(error);
-            res.status(500).json(error);
-          });
+    const addToContactList = client.post("listrecipient").request({
+      ContactAlt: fixedEmail,
+      ListID: process.env.MAILJET_LIST_ID,
+    });
+    await addToContactList
+      .then(() => {
+        res.status(200).json({});
       })
       .catch((error) => {
         console.log(error);
