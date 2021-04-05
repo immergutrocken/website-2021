@@ -1,6 +1,5 @@
 import NextImage from "next/image";
 import { useState } from "react";
-import styles from "../../styles/expander.module.scss";
 
 interface ExpanderProps {
   className?: string;
@@ -31,11 +30,7 @@ const Expander = ({
           />
         </div>
       </button>
-      <div
-        className={`text-white my-2 sm:text-5xl ${styles.textStroke} ${
-          collapsed ? "hidden" : "block"
-        }`}
-      >
+      <div className={`my-2 sm:text-5xl ${collapsed ? "hidden" : "block"}`}>
         {children}
       </div>
     </div>

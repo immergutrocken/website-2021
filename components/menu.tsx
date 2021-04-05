@@ -27,7 +27,9 @@ const buildMenuItem = (item: IMenuItem): JSX.Element => {
       return (
         <Expander title={item.title.de}>
           {item.submenuItems.map((subMenuItem, index) => (
-            <div key={index}>{buildMenuItem(subMenuItem)}</div>
+            <div className={`text-white ${styles.textStroke}`} key={index}>
+              {buildMenuItem(subMenuItem)}
+            </div>
           ))}
         </Expander>
       );
