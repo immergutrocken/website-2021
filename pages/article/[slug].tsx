@@ -16,6 +16,8 @@ import BlockContent from "@sanity/block-content-to-react";
 import ImageGallery from "../../components/shared/imageGallery";
 import InternalLink from "../../components/shared/internalLink";
 import Youtube from "../../components/shared/youtube";
+import Expander from "../../components/shared/expander";
+import styles from "../../styles/detail.module.scss";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -57,6 +59,7 @@ const serializers = {
   types: {
     imageGallery: ImageGallery,
     youtube: Youtube,
+    expander: Expander,
   },
   marks: {
     internalLink: InternalLink,
@@ -80,7 +83,7 @@ const Article = ({
         </a>
       </NextLink>
       <div className="grid grid-cols-1 h-full sm:grid-cols-2 sm:space-x-5">
-        <div className="relative sm:sticky sm:top-12 half-content-height sm:content-height">
+        <div className={`relative sm:sticky sm:top-12 ${styles.contentHeight}`}>
           <NextImage
             src={banner.urlWithBlur}
             layout="fill"

@@ -14,6 +14,7 @@ import Link from "../../components/shared/link";
 import { SocialMedia } from "../../lib/enums/socialMedia.enum";
 import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
+import styles from "../../styles/detail.module.scss";
 
 interface ArtistParams extends ParsedUrlQuery {
   slug: string;
@@ -81,7 +82,7 @@ const Artist = ({
         </a>
       </NextLink>
       <div className="grid grid-cols-1 h-full sm:grid-cols-2 sm:space-x-5">
-        <div className="relative sm:sticky sm:top-12 half-content-height sm:content-height">
+        <div className={`relative sm:sticky sm:top-12 ${styles.contentHeight}`}>
           <NextImage
             src={banner.urlWithBlur}
             layout="fill"
