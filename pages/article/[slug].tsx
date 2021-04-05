@@ -12,13 +12,9 @@ import React from "react";
 import Label from "../../components/shared/label";
 import Bubble from "../../components/shared/bubble";
 import NextImage from "next/image";
-import BlockContent from "@sanity/block-content-to-react";
-import ImageGallery from "../../components/shared/imageGallery";
-import InternalLink from "../../components/shared/internalLink";
-import Youtube from "../../components/shared/youtube";
-import Expander from "../../components/shared/expander";
 import styles from "../../styles/detail.module.scss";
 import NextHead from "next/head";
+import Content from "../../components/block-content/content";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -27,17 +23,6 @@ interface ArticleParams extends ParsedUrlQuery {
 interface ArticleProps extends IArticle {
   newsLinkList: INewsLink[];
 }
-
-const serializers = {
-  types: {
-    imageGallery: ImageGallery,
-    youtube: Youtube,
-    expander: Expander,
-  },
-  marks: {
-    internalLink: InternalLink,
-  },
-};
 
 export const getStaticPaths = async (): Promise<
   GetStaticPathsResult<ArticleParams>
@@ -112,12 +97,7 @@ const Article = ({
             <span>{author}</span>
           </div>
           <div className="mt-5 font-content">
-            <BlockContent
-              blocks={content}
-              serializers={serializers}
-              projectId={process.env.SANITY_PROJECT_ID}
-              dataset={process.env.SANITY_DATASET}
-            />
+            <Content content={content} />
           </div>
         </div>
       </div>

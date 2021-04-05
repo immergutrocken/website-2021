@@ -1,6 +1,12 @@
 import ReactPlayer from "react-player/youtube";
 
-const Youtube = (props): JSX.Element => (
+interface YoutubeProps {
+  node: {
+    url: string;
+  };
+}
+
+const Youtube = (props: YoutubeProps): JSX.Element => (
   <ReactPlayer url={props.node.url} width="100%" controls={true} />
 );
 
