@@ -5,6 +5,7 @@ interface ButtonProps {
   disabled?: boolean;
   active?: boolean;
   size?: "small" | "large";
+  success?: boolean;
 }
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
   disabled = false,
   active = true,
   size = "large",
+  success = false,
 }: ButtonProps): JSX.Element => (
   <button
     className={`text-white rounded-full focus:outline-none ${className} ${
@@ -22,7 +24,7 @@ const Button = ({
       size === "small"
         ? "pt-1 sm:pt-1.5 px-2.5 sm:px-4 text-base sm:text-xl"
         : "pt-1 sm:pt-2 px-2.5 sm:px-4 text-lg sm:text-4xl"
-    }`}
+    } ${success ? "bg-green-500" : ""}`}
     onClick={() => (onClick ? onClick() : {})}
     disabled={disabled}
   >

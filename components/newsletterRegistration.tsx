@@ -5,6 +5,7 @@ import styles from "../styles/newsletterRegistration.module.scss";
 const NewsletterRegistration = (): JSX.Element => {
   const [eMailAddress, setEMailAddress] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   const handleClick = (): void => {
     const eMailRegex = new RegExp("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$");
@@ -16,7 +17,10 @@ const NewsletterRegistration = (): JSX.Element => {
           eMailAddress,
           origin: window.location.origin,
         }),
-      }).then(() => setEMailAddress(""));
+      }).then(() => {
+        setEMailAddress("");
+        setSuccess(true);
+      });
     } else {
       setIsValid(false);
     }
@@ -35,7 +39,9 @@ const NewsletterRegistration = (): JSX.Element => {
           type="email"
           onChange={(event) => setEMailAddress(event.target.value)}
         />
-        <Button onClick={() => handleClick()}>Ok</Button>
+        <Button onClick={() => handleClick()} success={success}>
+          Ok
+        </Button>
       </div>
     </>
   );
