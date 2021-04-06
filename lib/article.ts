@@ -22,7 +22,20 @@ export const getArticleSlugList = async (): Promise<string[]> => {
 };
 
 export const getArticle = async (slug: string): Promise<IArticle> => {
-  const query = `*[_type == 'article' && slug.current == '${slug}']{'title': languages.de.title, 'banner': languages.de.banner, author, 'content': languages.de.content[]{..., asset->{..., '_key': _id}}}`;
+  const query = `
+  *
+  [_type == "article" && slug.current == "${slug}"]
+  {
+    "title": languages.de.title,
+    "banner": languages.de.banner,
+    author,
+    "content": languages.de.content[]{..., asset->{..., "_key": _id}, markDefs[]{
+      ...,
+      _type == "internalLink" => {
+        "docType": @.reference->_type,
+        "slug": @.reference->slug.current
+      },
+    }}}`;
   const result = (await client.fetch(query))[0];
   return {
     ...result,

@@ -19,7 +19,11 @@ const buildMenuItem = (item: IMenuItem): JSX.Element => {
       return <Link href={item.url}>{item.title.de}</Link>;
     case MenuItemType.INTERNAL_LINK:
       return (
-        <NextLink href={`/${item.documentType}/${item.slug}`}>
+        <NextLink
+          href={
+            item.url != null ? item.url : `/${item.documentType}/${item.slug}`
+          }
+        >
           <a>{item.title.de}</a>
         </NextLink>
       );

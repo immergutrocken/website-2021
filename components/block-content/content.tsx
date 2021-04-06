@@ -1,8 +1,10 @@
 import BlockContent from "@sanity/block-content-to-react";
+import AlignCenter from "./alignCenter";
 import BlockExpander from "./expander";
 import ImageGallery from "./imageGallery";
 import InternalLink from "./internalLink";
 import Youtube from "./youtube";
+import ExternalLink from "./externalLink";
 
 export const serializers = {
   types: {
@@ -12,6 +14,8 @@ export const serializers = {
   },
   marks: {
     internalLink: InternalLink,
+    link: ExternalLink,
+    "align-center": AlignCenter,
   },
 };
 

@@ -71,6 +71,7 @@ const buildMenuItems = (
             title: entry.title,
             slug: ref ? ref.slug.current : null,
             documentType: ref ? ref._type : null,
+            url: entry.url ?? null,
           };
         case MenuItemType.SUBMENU:
           return {

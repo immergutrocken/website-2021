@@ -1,7 +1,7 @@
 interface ButtonProps {
   children: JSX.Element | string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   active?: boolean;
   size?: "small" | "large";
@@ -23,7 +23,7 @@ const Button = ({
         ? "pt-1 sm:pt-1.5 px-2.5 sm:px-4 text-base sm:text-xl"
         : "pt-1 sm:pt-2 px-2.5 sm:px-4 text-lg sm:text-4xl"
     }`}
-    onClick={() => onClick()}
+    onClick={() => (onClick ? onClick() : {})}
     disabled={disabled}
   >
     {children}

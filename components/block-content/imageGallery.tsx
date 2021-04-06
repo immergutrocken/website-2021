@@ -1,3 +1,3 @@
-const ImageGallery = (): JSX.Element => <div>Bildergalerie coming soon!</div>;
+const ImageGallery = (): JSX.Element => <div></div>;
 
 export default ImageGallery;
