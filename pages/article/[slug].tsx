@@ -8,7 +8,6 @@ import { getArticle, getArticleSlugList, IArticle } from "../../lib/article";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
 import Layout from "../../components/layout";
 import NextLink from "next/link";
-import React from "react";
 import Label from "../../components/shared/label";
 import Bubble from "../../components/shared/bubble";
 import NextImage from "next/image";
