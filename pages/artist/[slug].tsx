@@ -54,15 +54,15 @@ export const getStaticProps = async ({
 };
 
 const imageMapping = new Map<SocialMedia, string>([
-  [SocialMedia.WEBSITE, "/facebook-logo.svg"],
+  [SocialMedia.WEBSITE, "/website-logo.svg"],
   [SocialMedia.YOUTUBE, "/youtube-logo.svg"],
   [SocialMedia.FACEBOOK, "/facebook-logo.svg"],
   [SocialMedia.TWITTER, "/twitter-logo.svg"],
   [SocialMedia.INSTAGRAM, "/instagram-logo.svg"],
-  [SocialMedia.VIMEO, "/facebook-logo.svg"],
-  [SocialMedia.TIKTOK, "/facebook-logo.svg"],
+  [SocialMedia.VIMEO, "/vimeo-logo.svg"],
+  [SocialMedia.TIKTOK, "/tiktok-logo.svg"],
   [SocialMedia.SPOTIFY, "/spotify-logo.svg"],
-  [SocialMedia.LABEL, "/facebook-logo.svg"],
+  [SocialMedia.LABEL, "/label-logo.svg"],
 ]);
 
 const Artist = ({
