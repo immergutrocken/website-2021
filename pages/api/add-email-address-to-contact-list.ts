@@ -8,9 +8,7 @@ export default async (
 ): Promise<void> => {
   const { eMailAddress, sha } = JSON.parse(req.body);
   const fixedEmail = eMailAddress.replace(" ", "+");
-  console.log(fixedEmail);
-  console.log(sha);
-  console.log(sha256(fixedEmail).toString());
+
   if (sha256(fixedEmail.replace(" ", "+")).toString() === sha) {
     const addToContactList = client.post("listrecipient").request({
       ContactAlt: fixedEmail,

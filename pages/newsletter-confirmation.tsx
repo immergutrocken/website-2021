@@ -2,6 +2,10 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import NextHead from "next/head";
 
+export const getStaticProps = async () => ({
+  props: {},
+});
+
 const NewsletterConfirmation = () => {
   const {
     query: { email, sha },
