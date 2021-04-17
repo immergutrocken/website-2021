@@ -1,7 +1,9 @@
 .logo {
   animation: spin 10s linear infinite;
-  top: calc(100vh * 0.322);
-  right: calc(100vw * 0.15);
+  top: calc(100vw * (587 / 1440) * (400 / 587));
+  right: calc(100vw * (320 / 1440));
+  width: calc(100vw * (108 / 1440));
+  height: calc(100vw * (108 / 1440));
 }
 
 @keyframes spin {

@@ -13,6 +13,7 @@ import { ArtistCategory } from "../lib/enums/artistCategory.enum";
 import Bubble from "../components/shared/bubble";
 import Menu from "../components/menu";
 import Layout from "../components/layout";
+import styles from "../styles/Home.module.scss";
 
 interface HomeProps {
   newsLinkList: INewsLink[];
@@ -75,9 +76,9 @@ export default function Home(props: HomeProps): JSX.Element {
           layout="responsive"
         />
       </div>
-      {/* <div className={`absolute ${styles.logo}`}>
-        <NextImage src="/images/ig-motto-logo1.svg" height={100} width={100} />
-      </div> */}
+      <div className={`absolute ${styles.logo}`}>
+        <NextImage src="/images/ig-motto-logo1.svg" layout="fill" />
+      </div>
       <div className="mt-4 sm:mt-6 text-center">
         <Button
           className="mx-2"
