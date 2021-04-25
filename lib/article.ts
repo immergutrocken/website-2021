@@ -36,7 +36,17 @@ export const getArticle = async (slug: string): Promise<IArticle> => {
         "slug": @.reference->slug.current
       },
     }}}`;
+
   const result = (await client.fetch(query))[0];
+  result.content.forEach((element) => {
+    if (element._type === "imageGallery") {
+      element.images.forEach((image) => {
+        image.urlPreview = urlFor(image.asset).height(200).url();
+        image.url = urlFor(image.asset).height(1000).url();
+      });
+    }
+  });
+
   return {
     ...result,
     banner: {
