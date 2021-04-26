@@ -68,7 +68,9 @@ const Footer = ({
         </span>
         , structured content powered by{" "}
         <Link href="https://www.sanity.io">sanity.io</Link>, hosted by{" "}
-        <Link href="https://www.vercel.com">vercel.com</Link>
+        <Link href="https://www.vercel.com?utm_source=website-2021&utm_campaign=oss">
+          vercel.com
+        </Link>
       </p>
     </div>
   </>
