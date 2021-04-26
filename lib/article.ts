@@ -41,7 +41,7 @@ export const getArticle = async (slug: string): Promise<IArticle> => {
   result.content.forEach((element) => {
     if (element._type === "imageGallery") {
       element.images.forEach((image) => {
-        image.urlPreview = urlFor(image.asset).height(200).url();
+        image.urlPreview = urlFor(image.asset).height(400).url();
         image.url = urlFor(image.asset).height(1000).url();
       });
     }
