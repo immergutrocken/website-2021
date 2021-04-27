@@ -14,6 +14,7 @@ import NextImage from "next/image";
 import styles from "../../styles/detail.module.scss";
 import NextHead from "next/head";
 import Content from "../../components/block-content/content";
+import Link from "../../components/shared/link";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -97,6 +98,11 @@ const Article = ({
           </div>
           <div className="mt-5 font-content">
             <Content content={content} />
+          </div>
+          <div className="mt-7 text-center">
+            <Link href="https://www.vercel.com?utm_source=website-2021&utm_campaign=oss">
+              <NextImage src="/powered-by-vercel.svg" width="212" height="44" />
+            </Link>
           </div>
         </div>
       </div>

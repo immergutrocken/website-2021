@@ -130,6 +130,11 @@ const Artist = ({
           <div className="mt-5 font-content sm:text-center">
             <BlockContent blocks={content} />
           </div>
+          <div className="mt-7 text-center">
+            <Link href="https://www.vercel.com?utm_source=website-2021&utm_campaign=oss">
+              <NextImage src="/powered-by-vercel.svg" width="212" height="44" />
+            </Link>
+          </div>
         </div>
       </div>
     </Layout>
