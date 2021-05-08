@@ -50,7 +50,7 @@ const Footer = ({
         className="mt-4 sm:mt-6"
       />
       <Partner
-        label="Ausserdem"
+        label="Gefördert von"
         list={additionalList}
         className="mt-4 sm:mt-6"
       />
