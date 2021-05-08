@@ -57,7 +57,7 @@ const ImageGallery = (props: ImageGalleryProps): JSX.Element => {
           <NextImage src="/close.svg" layout="fill" objectFit="contain" />
         </Bubble>
         {currentImageIndex != null && (
-          <div className="w-full max-w-4xl h-full flex flex-col justify-center">
+          <div className="w-full sm:max-w-4xl mx-5 sm:mx-8 h-full flex flex-col justify-center">
             <div className="relative w-full h-1/2">
               <NextImage
                 src={props.node.images[currentImageIndex].url}
@@ -66,7 +66,7 @@ const ImageGallery = (props: ImageGalleryProps): JSX.Element => {
                 alt={props.node.images[currentImageIndex].alt}
               />
               <Bubble
-                className="absolute top-1/2 -left-4 md:-left-7"
+                className="absolute top-1/2 -mt-4 sm:-mt-7 -left-4 md:-left-7"
                 onClick={() => {
                   if (currentImageIndex === 0) {
                     setCurrentImageIndex(props.node.images.length - 1);
@@ -82,7 +82,7 @@ const ImageGallery = (props: ImageGalleryProps): JSX.Element => {
                 />
               </Bubble>
               <Bubble
-                className="absolute top-1/2 -right-4 md:-right-7"
+                className="absolute top-1/2 -mt-4 sm:-mt-7 -right-4 md:-right-7"
                 onClick={() => {
                   if (currentImageIndex === props.node.images.length - 1) {
                     setCurrentImageIndex(0);
@@ -100,7 +100,7 @@ const ImageGallery = (props: ImageGalleryProps): JSX.Element => {
             </div>
             <div className="w-full font-milona flex flex-row items-center justify-end space-x-3 mt-3">
               <Label>Foto</Label>
-              <span className="text-3xl">
+              <span className="text-2xl sm:text-3xl">
                 {props.node.images[currentImageIndex].credits}
               </span>
             </div>
