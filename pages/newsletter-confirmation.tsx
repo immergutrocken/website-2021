@@ -4,11 +4,7 @@ import NextHead from "next/head";
 import NextImage from "next/image";
 import Link from "../components/shared/link";
 
-export const getStaticProps = async () => ({
-  props: {},
-});
-
-const NewsletterConfirmation = () => {
+const NewsletterConfirmation = (): JSX.Element => {
   const {
     query: { email, sha },
   } = useRouter();

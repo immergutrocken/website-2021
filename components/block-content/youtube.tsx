@@ -7,7 +7,9 @@ interface YoutubeProps {
 }
 
 const Youtube = (props: YoutubeProps): JSX.Element => (
-  <ReactPlayer url={props.node.url} width="100%" controls={true} />
+  <div className="mt-9">
+    <ReactPlayer url={props.node.url} width="100%" controls={true} />
+  </div>
 );
 
 export default Youtube;
