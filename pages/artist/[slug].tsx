@@ -12,10 +12,11 @@ import Label from "../../components/shared/label";
 import Bubble from "../../components/shared/bubble";
 import Link from "../../components/shared/link";
 import { SocialMedia } from "../../lib/enums/socialMedia.enum";
-import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
 import styles from "../../styles/detail.module.scss";
 import NextHead from "next/head";
+import { getNotificationList, INotification } from "../../lib/notification";
+import Content from "../../components/block-content/content";
 
 interface ArtistParams extends ParsedUrlQuery {
   slug: string;
@@ -23,6 +24,7 @@ interface ArtistParams extends ParsedUrlQuery {
 
 interface ArtistProps extends IArtist {
   newsLinkList: INewsLink[];
+  notificationList: INotification[];
 }
 
 export const getStaticPaths = async (): Promise<
@@ -49,6 +51,7 @@ export const getStaticProps = async ({
     props: {
       ...artist,
       newsLinkList: await getNewsLinkList(),
+      notificationList: await getNotificationList(),
     },
   };
 };
@@ -72,9 +75,10 @@ const Artist = ({
   author,
   socialMedia,
   content,
+  notificationList,
 }: ArtistProps): JSX.Element => {
   return (
-    <Layout newsLinkList={newsLinkList}>
+    <Layout newsLinkList={newsLinkList} notifcationList={notificationList}>
       <NextHead>
         <title>{`${title} - 21. Immergut Festival`}</title>
       </NextHead>
@@ -128,7 +132,7 @@ const Artist = ({
             ))}
           </div>
           <div className="mt-5 font-content sm:text-center">
-            <BlockContent blocks={content} />
+            <Content content={content} />
           </div>
           <div className="mt-7 text-center">
             <Link href="https://www.vercel.com?utm_source=website-2021&utm_campaign=oss">
