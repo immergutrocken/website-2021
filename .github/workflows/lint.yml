@@ -1,4 +1,4 @@
-name: unit-tests
+name: linting
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
   push:
     branches: [ main ]
 jobs:
-  run-tests:
+  run-linting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
