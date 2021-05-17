@@ -1,8 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import NextHead from "next/head";
-import NextImage from "next/image";
-import Link from "../components/shared/link";
 
 const NewsletterConfirmation = (): JSX.Element => {
   const {
@@ -71,11 +69,6 @@ const NewsletterConfirmation = (): JSX.Element => {
           </p>
         </div>
       )}
-      <div className="mt-7">
-        <Link href="https://www.vercel.com?utm_source=website-2021&utm_campaign=oss">
-          <NextImage src="/powered-by-vercel.svg" width="212" height="44" />
-        </Link>
-      </div>
     </div>
   );
 };

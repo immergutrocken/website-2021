@@ -17,13 +17,21 @@ const ImageGallery = (props: ImageGalleryProps): JSX.Element => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 mt-9">
         {props.node.images.map((image, index) => (
-          <button
+          <div
             className="relative cursor-pointer"
             key={index}
             onClick={() => {
               setShowLightbox(true);
               setCurrentImageIndex(index);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "enter") {
+                setShowLightbox(true);
+                setCurrentImageIndex(index);
+              }
+            }}
+            role="button"
+            tabIndex={0}
           >
             <div className="relative h-48 md:h-64 xl:h-96">
               <NextImage
@@ -39,7 +47,7 @@ const ImageGallery = (props: ImageGalleryProps): JSX.Element => {
                 objectFit="contain"
               />
             </Bubble>
-          </button>
+          </div>
         ))}
       </div>
       <div
