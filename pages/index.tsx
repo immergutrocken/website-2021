@@ -76,7 +76,7 @@ export default function Home(props: HomeProps): JSX.Element {
           layout="responsive"
         />
       </div>
-      <div className={`absolute ${styles.logo}`}>
+      <div className={`hidden sm:block absolute ${styles.logo}`}>
         <NextImage src="/images/ig-motto-logo1.svg" layout="fill" />
       </div>
       <div className="mt-4 sm:mt-6 text-center">

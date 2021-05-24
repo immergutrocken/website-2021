@@ -1,15 +1,16 @@
 $image-width: 1140;
 $image-height: 587;
 $circle-point-x: 320;
-$circle-point-y: 400;
+$circle-point-y: 180;
 $circle-site: 108;
 
 .logo {
   animation: spin 10s linear infinite;
-  top: 100vw * (587 / 1440) * (320 / 587) + (100vw * (108/1440));
-  left: 100vw * (1120 / 1440);
-  width: 100vw * (108/1440);
-  height: 100vw * ($ci / $image-width);
+  top: 100vw * ($circle-point-y / $image-width) +
+    (100vw * ($circle-site / $image-width));
+  left: 100vw * (($image-width - $circle-point-x) / $image-width);
+  width: 100vw * ($circle-site / $image-width);
+  height: 100vw * ($circle-site / $image-width);
 }
 
 @keyframes spin {
@@ -17,6 +18,6 @@ $circle-site: 108;
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
