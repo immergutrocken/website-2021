@@ -2,11 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import NextHead from "next/head";
 
-export const getStaticProps = async () => ({
-  props: {},
-});
-
-const NewsletterConfirmation = () => {
+const NewsletterConfirmation = (): JSX.Element => {
   const {
     query: { email, sha },
   } = useRouter();

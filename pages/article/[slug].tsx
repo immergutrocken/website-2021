@@ -14,6 +14,7 @@ import NextImage from "next/image";
 import styles from "../../styles/detail.module.scss";
 import NextHead from "next/head";
 import Content from "../../components/block-content/content";
+import { getNotificationList, INotification } from "../../lib/notification";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
@@ -21,6 +22,7 @@ interface ArticleParams extends ParsedUrlQuery {
 
 interface ArticleProps extends IArticle {
   newsLinkList: INewsLink[];
+  notificationList: INotification[];
 }
 
 export const getStaticPaths = async (): Promise<
@@ -47,6 +49,7 @@ export const getStaticProps = async ({
     props: {
       ...article,
       newsLinkList: await getNewsLinkList(),
+      notificationList: await getNotificationList(),
     },
   };
 };
@@ -57,9 +60,10 @@ const Article = ({
   banner,
   content,
   author,
+  notificationList,
 }: ArticleProps): JSX.Element => {
   return (
-    <Layout newsLinkList={newsLinkList}>
+    <Layout newsLinkList={newsLinkList} notifcationList={notificationList}>
       <NextHead>
         <title>{`${title} - 21. Immergut Festival`}</title>
       </NextHead>

@@ -14,6 +14,7 @@ import Bubble from "../components/shared/bubble";
 import Menu from "../components/menu";
 import Layout from "../components/layout";
 import styles from "../styles/Home.module.scss";
+import { getNotificationList, INotification } from "../lib/notification";
 
 interface HomeProps {
   newsLinkList: INewsLink[];
@@ -22,6 +23,7 @@ interface HomeProps {
   additionalList: IPartner[];
   menuItems: IMenuItem[];
   artistLinkList: IArtistLink[];
+  notificationList: INotification[];
 }
 
 export const getStaticProps = async (): Promise<{
@@ -35,6 +37,7 @@ export const getStaticProps = async (): Promise<{
       additionalList: await getPartnerList(PartnerCategory.ADDITIONAL),
       menuItems: await getMenu(),
       artistLinkList: await getArtistLinkList(),
+      notificationList: await getNotificationList(),
     },
   };
 };
@@ -44,7 +47,10 @@ export default function Home(props: HomeProps): JSX.Element {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <Layout newsLinkList={props.newsLinkList}>
+    <Layout
+      newsLinkList={props.newsLinkList}
+      notifcationList={props.notificationList}
+    >
       <NextHead>
         <title>21. Immergut Festival</title>
         <link rel="icon" href="/favicon.ico" />
