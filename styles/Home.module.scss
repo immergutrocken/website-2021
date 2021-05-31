@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $image-width: 1140;
 $image-height: 587;
 $circle-point-x: 320;
@@ -5,19 +7,9 @@ $circle-point-y: 180;
 $circle-site: 108;
 
 .logo {
-  animation: spin 10s linear infinite;
-  top: 100vw * ($circle-point-y / $image-width) +
-    (100vw * ($circle-site / $image-width));
-  left: 100vw * (($image-width - $circle-point-x) / $image-width);
-  width: 100vw * ($circle-site / $image-width);
-  height: 100vw * ($circle-site / $image-width);
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
+  top: 100vw * math.div($circle-point-y, $image-width) +
+    (100vw * math.div($circle-site, $image-width));
+  left: 100vw * math.div($image-width - $circle-point-x, $image-width);
+  width: 100vw * math.div($circle-site, $image-width);
+  height: 100vw * math.div($circle-site, $image-width);
 }
