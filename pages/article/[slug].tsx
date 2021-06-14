@@ -3,7 +3,6 @@ import {
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from "next";
-import { ParsedUrlQuery } from "node:querystring";
 import { getArticle, getArticleSlugList, IArticle } from "../../lib/article";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
 import Layout from "../../components/layout";
@@ -15,6 +14,7 @@ import styles from "../../styles/detail.module.scss";
 import NextHead from "next/head";
 import Content from "../../components/block-content/content";
 import { getNotificationList, INotification } from "../../lib/notification";
+import { ParsedUrlQuery } from "querystring";
 
 interface ArticleParams extends ParsedUrlQuery {
   slug: string;
