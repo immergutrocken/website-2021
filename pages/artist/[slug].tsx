@@ -3,7 +3,6 @@ import {
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from "next";
-import { ParsedUrlQuery } from "node:querystring";
 import Layout from "../../components/layout";
 import { getArtist, getArtistLinkList, IArtist } from "../../lib/artist";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
@@ -17,6 +16,7 @@ import styles from "../../styles/detail.module.scss";
 import NextHead from "next/head";
 import { getNotificationList, INotification } from "../../lib/notification";
 import Content from "../../components/block-content/content";
+import { ParsedUrlQuery } from "querystring";
 
 interface ArtistParams extends ParsedUrlQuery {
   slug: string;
