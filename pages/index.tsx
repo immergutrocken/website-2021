@@ -85,7 +85,7 @@ export default function Home(props: HomeProps): JSX.Element {
         />
       </div>
       <div
-        className={`hidden sm:block absolute ${styles.logo}`}
+        className={`absolute ${styles.logo}`}
         style={{ transform: `rotate(${scroll}deg)` }}
       >
         <NextImage src="/images/ig-motto-logo1.svg" layout="fill" />
