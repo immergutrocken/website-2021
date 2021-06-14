@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./shared/button";
 import styles from "../styles/newsletterRegistration.module.scss";
+import * as gtag from "../lib/gtag";
 
 const NewsletterRegistration = (): JSX.Element => {
   const [eMailAddress, setEMailAddress] = useState("");
@@ -19,6 +20,12 @@ const NewsletterRegistration = (): JSX.Element => {
         }),
       }).then(() => {
         setEMailAddress("");
+        gtag.event({
+          action: "newsletter_registration",
+          category: "Newsletter",
+          label: "",
+          value: "",
+        });
         setSuccess(true);
       });
     } else {
