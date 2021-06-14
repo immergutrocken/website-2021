@@ -3,7 +3,7 @@ import {
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from "next";
-import { ParsedUrlQuery } from "node:querystring";
+import { ParsedUrlQuery } from "querystring";
 import { getArticle, getArticleSlugList, IArticle } from "../../lib/article";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
 import Layout from "../../components/layout";
