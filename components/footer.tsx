@@ -57,9 +57,10 @@ const Footer = ({
     </div>
     <div className="w-full text-center p-3 mb-8 sm:mb-16 font-content mx-auto max-w-3xl">
       <p>
-        Immergut Festival / Am Bürgerseeweg 29 / Neustrelitz Programmänderungen
-        bleiben dem Immergutrocken e.V. als Veranstalter vorbehalten. Auf der
-        Veranstaltungsfläche gilt die Hausordnung laut Aushang.
+        Immergut Festival / Am Bürgerseeweg 28 / 17235 Neustrelitz
+        Programmänderungen bleiben dem Immergutrocken e.V. als Veranstalter
+        vorbehalten. Auf der Veranstaltungsfläche gilt die Hausordnung laut
+        Aushang.
       </p>
       <p className="mt-4">
         Made with{" "}

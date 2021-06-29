@@ -51,39 +51,37 @@ const buildMenuItems = (
   menu: ISanityMenu,
   data: ISanityMenu[]
 ): IMenuItem[] => {
-  return menu.menuEntries.map(
-    (entry): IMenuItem => {
-      const type = typeMapping.get(entry._type);
-      const submenu = data.find((menu) => menu._id === entry._ref);
-      const ref = menu.menuEntryRefs.find(
-        (ref) => ref?._id === entry.reference?._ref
-      );
-      switch (type) {
-        case MenuItemType.EXTERNAL_LINK:
-          return {
-            title: entry.title,
-            type: type,
-            url: entry.url,
-          };
-        case MenuItemType.INTERNAL_LINK:
-          return {
-            type: type,
-            title: entry.title,
-            slug: ref ? ref.slug.current : null,
-            documentType: ref ? ref._type : null,
-            url: entry.url ?? null,
-          };
-        case MenuItemType.SUBMENU:
-          return {
-            title: submenu.displayName,
-            type: type,
-            submenuItems: buildMenuItems(submenu, data),
-          };
-        default:
-          throw new Error(`The type ${type} is not implemented`);
-      }
+  return menu.menuEntries.map((entry): IMenuItem => {
+    const type = typeMapping.get(entry._type);
+    const submenu = data.find((menu) => menu._id === entry._ref);
+    const ref = menu.menuEntryRefs.find(
+      (ref) => ref?._id === entry.reference?._ref
+    );
+    switch (type) {
+      case MenuItemType.EXTERNAL_LINK:
+        return {
+          title: entry.title,
+          type: type,
+          url: entry.url,
+        };
+      case MenuItemType.INTERNAL_LINK:
+        return {
+          type: type,
+          title: entry.title,
+          slug: ref ? ref.slug.current : null,
+          documentType: ref ? ref._type : null,
+          url: entry.url ?? null,
+        };
+      case MenuItemType.SUBMENU:
+        return {
+          title: submenu.displayName,
+          type: type,
+          submenuItems: buildMenuItems(submenu, data),
+        };
+      default:
+        throw new Error(`The type ${type} is not implemented`);
     }
-  );
+  });
 };
 
 export const getMenu = async (): Promise<IMenuItem[]> => {
