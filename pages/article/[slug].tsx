@@ -51,7 +51,7 @@ export const getStaticProps = async ({
       newsLinkList: await getNewsLinkList(),
       notificationList: await getNotificationList(),
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 };
 

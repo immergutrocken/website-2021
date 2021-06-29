@@ -41,7 +41,7 @@ export const getStaticProps = async (): Promise<
       artistLinkList: await getArtistLinkList(),
       notificationList: await getNotificationList(),
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 };
 
