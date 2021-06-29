@@ -1,14 +1,31 @@
+@use "sass:math";
+
+$image-width: 320;
+$image-height: 455;
+$circle-point-x: 13;
+$circle-point-y: 170;
+$circle-site: 56;
+
 .logo {
-  animation: spin 10s linear infinite;
-  top: calc(100vh * 0.322);
-  right: calc(100vw * 0.15);
+  top: 100vw * math.div($circle-point-y, $image-width) +
+    (100vw * math.div($circle-site, $image-width));
+  left: 100vw * math.div($circle-point-x, $image-width);
+  width: 100vw * math.div($circle-site, $image-width);
+  height: 100vw * math.div($circle-site, $image-width);
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (min-width: 640px) {
+  $image-width: 1140;
+  $image-height: 587;
+  $circle-point-x: 320;
+  $circle-point-y: 180;
+  $circle-site: 108;
+
+  .logo {
+    top: 100vw * math.div($circle-point-y, $image-width) +
+      (100vw * math.div($circle-site, $image-width));
+    left: 100vw * math.div($image-width - $circle-point-x, $image-width);
+    width: 100vw * math.div($circle-site, $image-width);
+    height: 100vw * math.div($circle-site, $image-width);
   }
 }
