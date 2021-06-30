@@ -9,7 +9,6 @@
     "test": "jest --watchAll",
     "test:ci": "jest --ci --coverage",
     "lint": "next lint && yarn run stylelint",
-    "eslint": "eslint --fix '**/*.{ts,tsx}'",
     "stylelint": "stylelint --fix '**/*.{css,scss}'",
     "prettier": "prettier --write '**/*.{ts,tsx,css,scss}'",
     "prepare": "husky install"

@@ -5,7 +5,7 @@ import {
 } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Layout from "../../components/layout";
-import { getArtist, getArtistLinkList, IArtist } from "../../lib/artist";
+import { getArtist, getArtistList, IArtist } from "../../lib/artist";
 import { getNewsLinkList, INewsLink } from "../../lib/news";
 import NextImage from "next/image";
 import Label from "../../components/shared/label";
@@ -30,7 +30,7 @@ interface ArtistProps extends IArtist {
 export const getStaticPaths = async (): Promise<
   GetStaticPathsResult<ArtistParams>
 > => {
-  const artistLinkList = await getArtistLinkList();
+  const artistLinkList = await getArtistList();
   return {
     paths: artistLinkList.map((item) => ({
       params: {
