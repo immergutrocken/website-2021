@@ -3,7 +3,7 @@ import client from "../../lib/shared/mailjetClient";
 import sha256 from "crypto-js/sha256";
 
 interface IData {
-  ID: any;
+  ID: string | number;
   IsUnsubscribed: boolean;
 }
 
